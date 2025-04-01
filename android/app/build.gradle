@@ -105,6 +105,29 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+   compileSdkVersion 34  // Changed from 33 to 34
+    defaultConfig {
+        applicationId "com.mywebviewapp"  // Should already be set
+        minSdkVersion 24
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+    }
+    signingConfigs {
+        release {
+            storeFile file('my-release-key.keystore')
+            storePassword '12345678'  // Use your actual password
+            keyAlias 'my-key-alias'
+            keyPassword '12345678'    // Use your actual password
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
 }
 
 dependencies {
